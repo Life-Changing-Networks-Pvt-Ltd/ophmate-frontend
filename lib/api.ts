@@ -2,17 +2,17 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/a
 
 export const getGuestId = (): string => {
   if (typeof window === 'undefined') return 'guest_ssr';
-  let guestId = localStorage.getItem('ophmart_guest_id');
+  let guestId = sessionStorage.getItem('ophmart_guest_id');
   if (!guestId) {
     guestId = `guest_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
-    localStorage.setItem('ophmart_guest_id', guestId);
+    sessionStorage.setItem('ophmart_guest_id', guestId);
   }
   return guestId;
 };
 
 export const getAuthToken = (): string | null => {
   if (typeof window === 'undefined') return null;
-  return localStorage.getItem('ophmart_token');
+  return sessionStorage.getItem('ophmart_token');
 };
 
 export async function fetchApi<T = any>(

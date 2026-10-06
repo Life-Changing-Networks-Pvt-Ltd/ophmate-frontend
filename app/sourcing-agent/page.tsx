@@ -365,7 +365,7 @@ export default function SourcingAgentPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (typeof window !== 'undefined') {
-      localStorage.setItem(
+      sessionStorage.setItem(
         'ophmart_sourcing_agent_application',
         JSON.stringify({
           ...formData,

@@ -79,9 +79,9 @@ export default function SellerRegistrationStepThree() {
   const isSourcingAgent = useSyncExternalStore(
     () => () => undefined,
     () => {
-      const role = localStorage.getItem('ophmart_selected_role');
+      const role = sessionStorage.getItem('ophmart_selected_role');
       try {
-        const roles: string[] = JSON.parse(localStorage.getItem('ophmart_selected_roles') || '[]');
+        const roles: string[] = JSON.parse(sessionStorage.getItem('ophmart_selected_roles') || '[]');
         return role === 'Sourcing Agent' || roles.includes('Sourcing Agent');
       } catch {
         return role === 'Sourcing Agent';
@@ -106,7 +106,7 @@ export default function SellerRegistrationStepThree() {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     if (!canContinue) return;
-    localStorage.setItem('ophmart_seller_registration_terms', JSON.stringify({
+    sessionStorage.setItem('ophmart_seller_registration_terms', JSON.stringify({
       minimumOrderValue: Number(minimumOrderValue),
       minimumQuantity: Number(minimumQuantity),
       ...(isSourcingAgent && {

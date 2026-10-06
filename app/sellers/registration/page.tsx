@@ -232,7 +232,7 @@ export default function SellerRegistrationPage() {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     if (!canContinue) return;
-    localStorage.setItem('ophmart_seller_registration_contact', JSON.stringify({ fullName: fullName.trim(), companyName: companyName.trim(), email: email.trim(), country: selectedPhoneCountry.country, countryDialCode: `+${selectedPhoneCountry.dial}`, phone: `+${selectedPhoneCountry.dial}${cleanPhone}`, emailVerified, phoneVerified }));
+    sessionStorage.setItem('ophmart_seller_registration_contact', JSON.stringify({ fullName: fullName.trim(), companyName: companyName.trim(), email: email.trim(), country: selectedPhoneCountry.country, countryDialCode: `+${selectedPhoneCountry.dial}`, phone: `+${selectedPhoneCountry.dial}${cleanPhone}`, emailVerified, phoneVerified }));
     setSaved(true);
     router.push('/sellers/registration/step-2');
   };

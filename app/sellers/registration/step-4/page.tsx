@@ -70,7 +70,7 @@ export default function SellerRegistrationStepFour() {
   const canContinue = Boolean(form.legalName.trim() && form.businessType && form.addressLine1.trim() && form.country.trim() && form.state.trim() && form.city.trim() && form.postalCode.trim() && form.contactName.trim() && form.contactDesignation.trim() && /^\S+@\S+\.\S+$/.test(form.contactEmail) && form.contactPhone.trim().length >= 7 && form.emergencyName.trim() && form.emergencyPhone.trim().length >= 7);
   const submit = (event: FormEvent) => {
     event.preventDefault(); if (!canContinue) return;
-    localStorage.setItem('ophmart_seller_registration_company', JSON.stringify({ ...form, operationalAddress: sameAddress ? form.addressLine1 : form.operationalAddress, sameAsRegisteredAddress: sameAddress, logoName: logo?.name || '', logoType: logo?.type || '' }));
+    sessionStorage.setItem('ophmart_seller_registration_company', JSON.stringify({ ...form, operationalAddress: sameAddress ? form.addressLine1 : form.operationalAddress, sameAsRegisteredAddress: sameAddress, logoName: logo?.name || '', logoType: logo?.type || '' }));
     setSaved(true);
   };
 

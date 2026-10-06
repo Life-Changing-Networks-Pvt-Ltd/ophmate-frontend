@@ -167,7 +167,7 @@ export default function SellerRegistrationStepTwo() {
       categories: selectedCategories.map((id) => SELLER_CATEGORIES.find((category) => category.id === id)?.name || id),
       products: selectedProducts.map((id) => id.split(':').slice(1).join(':'))
     };
-    localStorage.setItem('ophmart_seller_registration_regions_categories', JSON.stringify(payload));
+    sessionStorage.setItem('ophmart_seller_registration_regions_categories', JSON.stringify(payload));
     setSaved(true);
     router.push('/sellers/registration/step-3');
   };

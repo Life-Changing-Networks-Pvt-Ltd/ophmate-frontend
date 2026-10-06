@@ -1084,7 +1084,7 @@ export default function BuyersPage() {
       }
 
       if (typeof window !== 'undefined') {
-        localStorage.setItem(
+        sessionStorage.setItem(
           'ophmart_buyer_registration',
           JSON.stringify({
             ...payload,

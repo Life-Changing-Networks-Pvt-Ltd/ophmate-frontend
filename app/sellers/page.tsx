@@ -458,16 +458,16 @@ export default function SellersPage() {
     // Keep the existing registration flow compatible while preserving every selection.
     const primaryRole = hasSourcingAgent ? 'Sourcing Agent' : selectedRoles[0];
 
-    // Save to localStorage for persistence
+    // Save to sessionStorage for persistence
     if (typeof window !== 'undefined') {
-      localStorage.setItem('ophmart_selected_role', primaryRole);
-      localStorage.setItem('ophmart_selected_roles', JSON.stringify(selectedRoles));
+      sessionStorage.setItem('ophmart_selected_role', primaryRole);
+      sessionStorage.setItem('ophmart_selected_roles', JSON.stringify(selectedRoles));
       if (selectedSourcingTypes.length > 0) {
-        localStorage.setItem('ophmart_selected_sourcing_types', JSON.stringify(selectedSourcingTypes));
-        localStorage.setItem('ophmart_selected_sourcing_type', selectedSourcingTypes[0]);
+        sessionStorage.setItem('ophmart_selected_sourcing_types', JSON.stringify(selectedSourcingTypes));
+        sessionStorage.setItem('ophmart_selected_sourcing_type', selectedSourcingTypes[0]);
       } else {
-        localStorage.removeItem('ophmart_selected_sourcing_types');
-        localStorage.removeItem('ophmart_selected_sourcing_type');
+        sessionStorage.removeItem('ophmart_selected_sourcing_types');
+        sessionStorage.removeItem('ophmart_selected_sourcing_type');
       }
     }
 

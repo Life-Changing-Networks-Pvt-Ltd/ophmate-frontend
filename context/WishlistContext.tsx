@@ -22,7 +22,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
   const [wishlistItems, setWishlistItems] = useState<IProduct[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  // Initialize from LocalStorage or fetch if authenticated
+  // Initialize from sessionStorage or fetch if authenticated
   useEffect(() => {
     const loadWishlist = async () => {
       setIsLoading(true);
@@ -39,7 +39,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         }
       } else {
         // Guest user local storage
-        const saved = localStorage.getItem('ophmart_guest_wishlist');
+        const saved = sessionStorage.getItem('ophmart_guest_wishlist');
         if (saved) {
           try {
             const parsed = JSON.parse(saved);
@@ -84,7 +84,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         console.error('Failed to sync wishlist with server:', err);
       }
     } else {
-      localStorage.setItem('ophmart_guest_wishlist', JSON.stringify(newItems));
+      sessionStorage.setItem('ophmart_guest_wishlist', JSON.stringify(newItems));
     }
   };
 

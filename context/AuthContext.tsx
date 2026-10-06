@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchCurrentUser = async () => {
-    const token = localStorage.getItem('ophmart_token');
+    const token = sessionStorage.getItem('ophmart_token');
     if (!token) {
       setUser(null);
       setIsLoading(false);
@@ -34,11 +34,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (res.success && res.data) {
         setUser(res.data);
       } else {
-        localStorage.removeItem('ophmart_token');
+        sessionStorage.removeItem('ophmart_token');
         setUser(null);
       }
     } catch {
-      localStorage.removeItem('ophmart_token');
+      sessionStorage.removeItem('ophmart_token');
       setUser(null);
     } finally {
       setIsLoading(false);
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
 
     if (res.success && res.data) {
-      localStorage.setItem('ophmart_token', res.data.accessToken);
+      sessionStorage.setItem('ophmart_token', res.data.accessToken);
       setUser(res.data.user);
       return { success: true };
     }
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
 
     if (res.success && res.data) {
-      localStorage.setItem('ophmart_token', res.data.accessToken);
+      sessionStorage.setItem('ophmart_token', res.data.accessToken);
       setUser(res.data.user);
       return { success: true };
     }
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('ophmart_token');
+    sessionStorage.removeItem('ophmart_token');
     setUser(null);
   };
 
